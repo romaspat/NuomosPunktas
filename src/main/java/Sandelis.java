@@ -2,12 +2,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sandelis implements Paieska {
+public class Sandelis implements Paieska, IOSandeliui {
 
     private String sandelioPavadinimas;
     private List<Kompiuteris> sandelis = new ArrayList<>();
 
-    public Sandelis(String sandelioPavadinimas) {
+    Sandelis(String sandelioPavadinimas) {
         this.sandelioPavadinimas = sandelioPavadinimas;
     }
 
