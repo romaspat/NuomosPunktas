@@ -4,6 +4,10 @@ public class StacionarusKompiuteris extends Kompiuteris {
 
     private String korpusas;
 
+    public StacionarusKompiuteris(){
+
+    }
+
     public StacionarusKompiuteris(String korpusas,int id, String pavadinimas, String procesorius,
                                   String atmintis, String diskas, String os, String kaina) {
         this.korpusas = korpusas;
@@ -26,5 +30,9 @@ public class StacionarusKompiuteris extends Kompiuteris {
     @Override
     public String toString(){
         return "ID: "+super.getId()+" "+korpusas+" "+super.toString();
+    }
+
+    public void setKorpusas(String korpusas) {
+        this.korpusas = korpusas;
     }
 }

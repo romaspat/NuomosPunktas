@@ -1,6 +1,9 @@
-public interface IOSandeliui {
+import java.util.List;
 
-    void pridetiKompiuteri(Kompiuteris kompiuteris);
-    void ismestiKompiuteri(int id);
+public interface IOSandeliui<T> {
+
+    void pridetiKompiuteri(T kompiuteris);
+    void ismestiKompiuteri(T kompiuteris);
+    List<T> grazintiVisus();
 
 }

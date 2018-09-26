@@ -4,6 +4,10 @@ public class NesiojamasKompiuteris extends Kompiuteris {
 
     private String ekranas;
 
+    public NesiojamasKompiuteris(){
+
+    }
+
     public NesiojamasKompiuteris(String ekranas, int id, String pavadinimas, String procesorius,
                                  String atmintis, String diskas, String os, String kaina) {
         this.ekranas = ekranas;
@@ -26,5 +30,9 @@ public class NesiojamasKompiuteris extends Kompiuteris {
     @Override
     public String toString(){
         return "ID: "+super.getId()+" "+ekranas+" "+super.toString();
+    }
+
+    public String getEkranas() {
+        return ekranas;
     }
 }
