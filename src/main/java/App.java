@@ -6,7 +6,8 @@ public class App {
     public static void main(String[] args) {
 
         App app = new App();
-        NuomosPunktas np = new NuomosPunktas();
+        NuomosPunktas np = NuomosPunktas.getInstance();
+        Sandelis sand = new Sandelis();
 
 
         np.isnuomotiKompiuteri(2, 10);

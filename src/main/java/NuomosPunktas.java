@@ -4,7 +4,13 @@ import java.util.List;
 
 public class NuomosPunktas implements NuomosOperacijos<Kompiuteris> {
 
-    private Sandelis nuomosSandelis = new Sandelis();
+    private Sandelis nuomosSandelis;
+
+    private static NuomosPunktas instance = null;
+
+    private NuomosPunktas() {
+        nuomosSandelis = new Sandelis();
+    }
 
     @Override
     public List<Kompiuteris> grazintiSarasa(boolean pozymis) {
@@ -52,7 +58,10 @@ public class NuomosPunktas implements NuomosOperacijos<Kompiuteris> {
         return nuomosSandelis;
     }
 
-    public void setNuomosSandelis(Sandelis nuomosSandelis) {
-        this.nuomosSandelis = nuomosSandelis;
+    public static NuomosPunktas getInstance(){
+        if (instance == null) {
+           instance = new NuomosPunktas();
+        }
+        return instance;
     }
 }
