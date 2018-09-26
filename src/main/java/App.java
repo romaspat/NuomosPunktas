@@ -7,8 +7,6 @@ public class App {
 
         App app = new App();
         NuomosPunktas np = NuomosPunktas.getInstance();
-        Sandelis sand = new Sandelis();
-
 
         np.isnuomotiKompiuteri(2, 10);
         np.isnuomotiKompiuteri(4, 15);
@@ -27,7 +25,7 @@ public class App {
 
     }
 
-    public void spausdintiSarasa(List<Kompiuteris> sarasas) {
+    private void spausdintiSarasa(List<Kompiuteris> sarasas) {
         for (Kompiuteris kompiuteris : sarasas) {
             System.out.println(kompiuteris.toString());
         }

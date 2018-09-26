@@ -9,7 +9,7 @@ public class NuomosPunktas implements NuomosOperacijos<Kompiuteris> {
     private static NuomosPunktas instance = null;
 
     private NuomosPunktas() {
-        nuomosSandelis = new Sandelis();
+        nuomosSandelis = Sandelis.getInstance();
     }
 
     @Override
@@ -54,11 +54,11 @@ public class NuomosPunktas implements NuomosOperacijos<Kompiuteris> {
         nuomosSandelis.grazintiVisus().get(id).setGrazinimoData(null);
     }
 
-    public Sandelis getNuomosSandelis() {
+    Sandelis getNuomosSandelis() {
         return nuomosSandelis;
     }
 
-    public static NuomosPunktas getInstance(){
+    static NuomosPunktas getInstance(){
         if (instance == null) {
            instance = new NuomosPunktas();
         }

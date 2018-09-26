@@ -6,7 +6,9 @@ public class Sandelis implements IOSandeliui<Kompiuteris> {
 
     private List<Kompiuteris> kompiuteriai;
 
-    Sandelis() {
+    private static Sandelis instance = null;
+
+    private Sandelis() {
         kompiuteriai = new ArrayList<>();
         kompiuteriai.add(new PlansetinisKompiuteris("10\"", 1, "Samsung T580", "2Ghz",
                 "2Gb", "16Gb", "Android", "15Eur/dienai"));
@@ -36,4 +38,10 @@ public class Sandelis implements IOSandeliui<Kompiuteris> {
         return kompiuteriai;
     }
 
+    static Sandelis getInstance(){
+        if (instance == null) {
+            instance = new Sandelis();
+        }
+        return instance;
+    }
 }
