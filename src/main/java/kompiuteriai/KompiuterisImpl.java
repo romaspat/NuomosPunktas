@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public abstract class KompiuterisImpl implements IKompiuteris {
 
     private int id;
+    private String tipas;
     private String pavadinimas;
     private String dydis;
     private String procesorius;
@@ -13,12 +14,16 @@ public abstract class KompiuterisImpl implements IKompiuteris {
     private String os;
     private Double dienosKaina;
     private Double savaitesKaina;
-    private LocalDate isnuomavimoData=null;
-    private LocalDate grazinimoData=null;
+    private LocalDate isnuomavimoData = null;
+    private LocalDate grazinimoData = null;
 
     @Override
     public int getId() {
         return id;
+    }
+
+    public String getTipas() {
+        return tipas;
     }
 
     @Override
@@ -79,6 +84,11 @@ public abstract class KompiuterisImpl implements IKompiuteris {
         this.grazinimoData = grazinimoData;
     }
 
+    public KompiuterisImpl setTipas(String tipas) {
+        this.tipas = tipas;
+        return this;
+    }
+
     public KompiuterisImpl setPavadinimas(String pavadinimas) {
         this.pavadinimas = pavadinimas;
         return this;
@@ -134,7 +144,7 @@ public abstract class KompiuterisImpl implements IKompiuteris {
         } else {
             s = "LAISVAS";
         }
-        return "" + id + " " + pavadinimas + " " + dydis + " " + procesorius + " " + atmintis + " " + diskas + " " + os +
-                " " + dienosKaina + " Eur/dienai " + savaitesKaina + " Eur/savaitei " + s;
+        return "" + id + " " + tipas + " " + pavadinimas + " " + dydis + " " + procesorius + " " + atmintis + " "
+                + diskas + " " + os + " " + dienosKaina + " Eur/dienai " + savaitesKaina + " Eur/savaitei " + s;
     }
 }

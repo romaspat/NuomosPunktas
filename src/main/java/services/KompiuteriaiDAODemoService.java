@@ -9,25 +9,24 @@ import kompiuteriai.StacionarusKompiuteris;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KompiuteriaiDAOImpl implements IKompiuteriaiDAO<KompiuterisImpl> {
+public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<KompiuterisImpl> {
 
     private List<KompiuterisImpl> kompiuteriai;
-
     {
         kompiuteriai = new ArrayList<>();
-        kompiuteriai.add(new PlansetinisKompiuteris().setId(gautiId()).setPavadinimas("Samsung T580").
+        kompiuteriai.add(new PlansetinisKompiuteris().setId(gautiId()).setTipas("PK").setPavadinimas("Samsung T580").
                 setDydis("10\"").setProcesorius("2Ghz").setAtmintis("2Gb").setDiskas("16Gb").setOs("Android").
                 setDienosKaina(15).setSavaitesKaina(60));
-        kompiuteriai.add(new PlansetinisKompiuteris().setId(gautiId()).setPavadinimas("Samsung T710").
+        kompiuteriai.add(new PlansetinisKompiuteris().setId(gautiId()).setTipas("PK").setPavadinimas("Samsung T710").
                 setDydis("7\"").setProcesorius("2Ghz").setAtmintis("2Gb").setDiskas("32Gb").setOs("Android").
                 setDienosKaina(10).setSavaitesKaina(50));
-        kompiuteriai.add(new NesiojamasKompiuteris().setId(gautiId()).setPavadinimas("Lenovo Yoga 910").
+        kompiuteriai.add(new NesiojamasKompiuteris().setId(gautiId()).setTipas("NK").setPavadinimas("Lenovo Yoga 910").
                 setDydis("13\"").setProcesorius("3Ghz").setAtmintis("8Gb").setDiskas("512Gb").setOs("Windows 10").
                 setDienosKaina(20).setSavaitesKaina(50));
-        kompiuteriai.add(new NesiojamasKompiuteris().setId(gautiId()).setPavadinimas("HP Probook 450").
+        kompiuteriai.add(new NesiojamasKompiuteris().setId(gautiId()).setTipas("NK").setPavadinimas("HP Probook 450").
                 setDydis("15\"").setProcesorius("2Ghz").setAtmintis("4Gb").setDiskas("256Gb").setOs("Linux").
                 setDienosKaina(15).setSavaitesKaina(60));
-        kompiuteriai.add(new StacionarusKompiuteris().setId(gautiId()).setPavadinimas("Dell Optiplex 3010").
+        kompiuteriai.add(new StacionarusKompiuteris().setId(gautiId()).setTipas("SK").setPavadinimas("Dell Optiplex 3010").
                 setDydis("SFF").setProcesorius("3Ghz").setAtmintis("8Gb").setDiskas("1024Gb").setOs("Windows").
                 setDienosKaina(10).setSavaitesKaina(50));
     }
@@ -56,7 +55,6 @@ public class KompiuteriaiDAOImpl implements IKompiuteriaiDAO<KompiuterisImpl> {
                 return;
             }
         }
-
         kompiuteriai.remove(id);
     }
 

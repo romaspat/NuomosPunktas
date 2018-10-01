@@ -24,7 +24,7 @@ public class App {
         app.spausdintiSarasa(laisviDatai);
 
         System.out.println("-------------");
-        app.spausdintiSarasa(np.getNuomosKompiuteriaiDAOImpl().gautiVisus());
+        app.spausdintiSarasa(np.getdAOService().gautiVisus());
 
     }
 
