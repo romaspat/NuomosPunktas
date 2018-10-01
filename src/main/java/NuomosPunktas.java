@@ -1,67 +1,54 @@
+import kompiuteriai.KompiuterisImpl;
+import services.KompiuteriaiDAOImpl;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NuomosPunktas implements NuomosOperacijos<Kompiuteris> {
+public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
 
-    private Sandelis nuomosSandelis;
+    private KompiuteriaiDAOImpl nuomosKompiuteriaiDAOImpl = new KompiuteriaiDAOImpl();
 
-    private static NuomosPunktas instance = null;
-
-    private NuomosPunktas() {
-        nuomosSandelis = Sandelis.getInstance();
-    }
 
     @Override
-    public List<Kompiuteris> grazintiSarasa(boolean pozymis) {
-        List<Kompiuteris> temp = new ArrayList<>();
+    public List<KompiuterisImpl> parodytiSarasa(boolean pozymis) {
+        List<KompiuterisImpl> temp = new ArrayList<>();
 
-        for (Kompiuteris kompiuteris : nuomosSandelis.grazintiVisus()) {
-            if (kompiuteris.isIsnuomota() == pozymis) {
-                temp.add(kompiuteris);
+        for (KompiuterisImpl kompiuterisImpl : nuomosKompiuteriaiDAOImpl.gautiVisus()) {
+            if (pozymis ^= (kompiuterisImpl.getGrazinimoData() != null)) {
+                temp.add(kompiuterisImpl);
             }
         }
         return temp;
     }
 
     @Override
-    public List<Kompiuteris> grazintiLaisvusDatai(LocalDate data) {
-        List<Kompiuteris> temp = new ArrayList<>();
-
-        for (Kompiuteris kompiuteris : nuomosSandelis.grazintiVisus()) {
-            if (kompiuteris.isIsnuomota()) {
-                if (data.isAfter(kompiuteris.getGrazinimoData())) {
+    public List<KompiuterisImpl> parodytiLaisvusDatai(LocalDate data) {
+        List<KompiuterisImpl> temp = new ArrayList<>();
+        if (!nuomosKompiuteriaiDAOImpl.gautiVisus().isEmpty()) {
+            for (KompiuterisImpl kompiuteris : nuomosKompiuteriaiDAOImpl.gautiVisus()) {
+                if (kompiuteris.getGrazinimoData()!=null && data.isAfter(kompiuteris.getGrazinimoData())) {
                     temp.add(kompiuteris);
                 }
-            } else {
-                temp.add(kompiuteris);
             }
+            return temp;
         }
-        return temp;
+        return null;
     }
 
     @Override
     public void isnuomotiKompiuteri(int id, int terminas) {
-        nuomosSandelis.grazintiVisus().get(id).setIsnuomota(true);
-        nuomosSandelis.grazintiVisus().get(id).setIsnuomavimoData(LocalDate.now());
-        nuomosSandelis.grazintiVisus().get(id).setGrazinimoData(LocalDate.now().plusDays(terminas));
+        nuomosKompiuteriaiDAOImpl.gautiVisus().get(id).setIsnuomavimoData(LocalDate.now());
+        nuomosKompiuteriaiDAOImpl.gautiVisus().get(id).setGrazinimoData(LocalDate.now().plusDays(terminas));
     }
 
     @Override
     public void grazintiKompiuteri(int id) {
-        nuomosSandelis.grazintiVisus().get(id).setIsnuomota(false);
-        nuomosSandelis.grazintiVisus().get(id).setIsnuomavimoData(null);
-        nuomosSandelis.grazintiVisus().get(id).setGrazinimoData(null);
+        nuomosKompiuteriaiDAOImpl.gautiVisus().get(id).setIsnuomavimoData(null);
+        nuomosKompiuteriaiDAOImpl.gautiVisus().get(id).setGrazinimoData(null);
     }
 
-    Sandelis getNuomosSandelis() {
-        return nuomosSandelis;
-    }
-
-    static NuomosPunktas getInstance(){
-        if (instance == null) {
-           instance = new NuomosPunktas();
-        }
-        return instance;
+    KompiuteriaiDAOImpl getNuomosKompiuteriaiDAOImpl() {
+        return nuomosKompiuteriaiDAOImpl;
     }
 }
