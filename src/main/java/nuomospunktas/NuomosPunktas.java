@@ -1,6 +1,7 @@
 package nuomospunktas;
 
 import nuomospunktas.business.KompiuteriuPaieska;
+import nuomospunktas.business.KompiuteriuPaieskaMapas;
 import nuomospunktas.dao.IKompiuteriaiDAO;
 import nuomospunktas.kompiuteriai.Kompiuteris;
 import nuomospunktas.services.DataType;
@@ -8,36 +9,25 @@ import nuomospunktas.services.KompiuteriaiDAOServiceFactory;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class NuomosPunktas implements NuomosOperacijos<Kompiuteris> {
 
     private IKompiuteriaiDAO<Kompiuteris> kompiuteriaiDAO =
             new KompiuteriaiDAOServiceFactory().getInstance(DataType.DEMO);
 
+    KompiuteriuPaieskaMapas paieska = new KompiuteriuPaieskaMapas();
 
-
-    private KompiuteriuPaieska kompiuteriuPaieska = new KompiuteriuPaieska(kompiuteriaiDAO.gautiVisus());
-
-    public List<Kompiuteris> ieskotiKompiuteriu() {
+    public List<Kompiuteris> ieskotiKompiuteriu(Map<String,String> kriterijai) {
         try {
-            return kompiuteriuPaieska.visiKompiuteriai().getResult();
-        } catch (RuntimeException e) {
+
+            return paieska.ieskoti(kompiuteriaiDAO.gautiVisus(), kriterijai);
+
+        } catch (Exception e) {
             System.out.println("Exception occurred");
         }
         return null;
     }
-
-    public List<Kompiuteris> ieskotiKompiuteriu(boolean laisvi) {
-        if (laisvi) {
-            return kompiuteriuPaieska.tikLaisvi().getResult();
-        } else {
-            return kompiuteriuPaieska.tikIsnuomoti().getResult();
-        }
-    }
-
-
-
-
 
     @Override
     public void isnuomotiKompiuteri(int id, int terminas) {
