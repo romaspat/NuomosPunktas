@@ -12,7 +12,7 @@ public class App {
         App app = new App();
         NuomosPunktas np = new NuomosPunktas();
 
-        KompiuteriuPaieska paieska = new KompiuteriuPaieska();
+        KompiuteriuPaieska paieska = new KompiuteriuPaieska(np.getKompiuteriaiDAO().gautiVisus());
 
 
         np.isnuomotiKompiuteri(2, 10);
@@ -20,11 +20,11 @@ public class App {
         np.isnuomotiKompiuteri(0, 1);
 
         System.out.println("-------------");
+        //List<KompiuterisImpl> visi = new ArrayList<>();
         List<KompiuterisImpl> result = new ArrayList<>();
-        result = np.getKompiuteriaiDAO().gautiVisus();
+        // visi = np.getKompiuteriaiDAO().gautiVisus();
 
-        result = paieska.yraLaisvi(result, true).maziauNeiKainaDienai(result, 20.0).
-                pagalDiska(result, "256").getResult();
+        result = paieska.yraLaisvi().maziauNeiKainaDienai(18.0).getResult();
         app.spausdintiSarasa(result);
 
 //        System.out.println("-------------");
@@ -33,7 +33,6 @@ public class App {
 //
 //        System.out.println("-------------");
 //        app.spausdintiSarasa(np.getKompiuteriaiDAO().gautiVisus());
-
 
 
     }

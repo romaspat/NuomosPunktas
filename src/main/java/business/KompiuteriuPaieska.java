@@ -9,134 +9,152 @@ import java.util.List;
 public class KompiuteriuPaieska {
 
     private List<KompiuterisImpl> result = new ArrayList<>();
+    private List<KompiuterisImpl> temp = new ArrayList<>();
 
-    public KompiuteriuPaieska yraLaisvi(List<KompiuterisImpl> kompiuteriai, Boolean arLaisvi) {
-        if (arLaisvi != null) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (arLaisvi) {
-                    if (kompiuteris.getGrazinimoData() != null) {
-                        if (!result.contains(kompiuteris)) {
-                            result.add(kompiuteris);
-                        }
+    public KompiuteriuPaieska(List<KompiuterisImpl> result) {
+        this.result = result;
+    }
+
+    public KompiuteriuPaieska yraLaisvi() {
+        if (result.size() > 0) {
+            for (KompiuterisImpl kompiuteris : result) {
+                if (kompiuteris.getGrazinimoData() != null) {
+                    if (kompiuteris.getGrazinimoData().isAfter(LocalDate.now())) {
+                        temp.add(kompiuteris);
                     }
                 }
             }
+            result.removeAll(temp);
+            temp = new ArrayList<>();
         }
         return this;
     }
 
-    public KompiuteriuPaieska pagalPavadinima(List<KompiuterisImpl> kompiuteriai, String pavadinimas) {
+    public KompiuteriuPaieska pagalPavadinima(String pavadinimas) {
         if (!pavadinimas.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (kompiuteris.getPavadinimas().toLowerCase().contains(pavadinimas.toLowerCase())) {
-                    if (!result.contains(kompiuteris)) {
-                        result.add(kompiuteris);
-                    }
+            for (KompiuterisImpl kompiuteris : result) {
+                if (!kompiuteris.getPavadinimas().toLowerCase().contains(pavadinimas.toLowerCase())) {
+                    temp.add(kompiuteris);
                 }
             }
+            result.removeAll(temp);
         }
+        temp = new ArrayList<>();
         return this;
     }
 
-    public KompiuteriuPaieska pagalDydi(List<KompiuterisImpl> kompiuteriai, String dydis) {
+    public KompiuteriuPaieska pagalTipa(String tipas) {
+        if (!tipas.isEmpty()) {
+            for (KompiuterisImpl kompiuteris : result) {
+                if (!kompiuteris.getTipas().toLowerCase().contains(tipas.toLowerCase())) {
+                    temp.add(kompiuteris);
+                }
+            }
+            result.removeAll(temp);
+        }
+        temp = new ArrayList<>();
+        return this;
+    }
+
+    public KompiuteriuPaieska pagalDydi(String dydis) {
         if (!dydis.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (kompiuteris.getDydis().toLowerCase().contains(dydis.toLowerCase())) {
-                    if (!result.contains(kompiuteris)) {
-                        result.add(kompiuteris);
-                    }
+            for (KompiuterisImpl kompiuteris : result) {
+                if (!kompiuteris.getDydis().toLowerCase().contains(dydis.toLowerCase())) {
+                    temp.add(kompiuteris);
                 }
             }
+            result.removeAll(temp);
         }
+        temp = new ArrayList<>();
         return this;
     }
 
-    public KompiuteriuPaieska pagalProcesoriu(List<KompiuterisImpl> kompiuteriai, String procesorius) {
+    public KompiuteriuPaieska pagalProcesoriu(String procesorius) {
         if (!procesorius.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (kompiuteris.getProcesorius().toLowerCase().contains(procesorius.toLowerCase())) {
-                    if (!result.contains(kompiuteris)) {
-                        result.add(kompiuteris);
-                    }
+            for (KompiuterisImpl kompiuteris : result) {
+                if (!kompiuteris.getProcesorius().toLowerCase().contains(procesorius.toLowerCase())) {
+                    temp.add(kompiuteris);
                 }
             }
+            result.removeAll(temp);
         }
+        temp = new ArrayList<>();
         return this;
     }
 
-    public KompiuteriuPaieska pagalAtminti(List<KompiuterisImpl> kompiuteriai, String atmintis) {
+    public KompiuteriuPaieska pagalAtminti(String atmintis) {
         if (!atmintis.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (kompiuteris.getAtmintis().toLowerCase().contains(atmintis.toLowerCase())) {
-                    if (!result.contains(kompiuteris)) {
-                        result.add(kompiuteris);
-                    }
+            for (KompiuterisImpl kompiuteris : result) {
+                if (!kompiuteris.getAtmintis().toLowerCase().contains(atmintis.toLowerCase())) {
+                    temp.add(kompiuteris);
                 }
             }
+            result.removeAll(temp);
         }
+        temp = new ArrayList<>();
         return this;
     }
 
-    public KompiuteriuPaieska pagalDiska(List<KompiuterisImpl> kompiuteriai, String diskas) {
+    public KompiuteriuPaieska pagalDiska(String diskas) {
         if (!diskas.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (kompiuteris.getDiskas().toLowerCase().contains(diskas.toLowerCase())) {
-                    if (!result.contains(kompiuteris)) {
-                        result.add(kompiuteris);
-                    }
+            for (KompiuterisImpl kompiuteris : result) {
+                if (!kompiuteris.getDiskas().toLowerCase().contains(diskas.toLowerCase())) {
+                    temp.add(kompiuteris);
                 }
             }
+            result.removeAll(temp);
         }
+        temp = new ArrayList<>();
         return this;
     }
 
-    public KompiuteriuPaieska pagalOs(List<KompiuterisImpl> kompiuteriai, String os) {
+    public KompiuteriuPaieska pagalOs(String os) {
         if (!os.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (kompiuteris.getOs().toLowerCase().contains(os.toLowerCase())) {
-                    if (!result.contains(kompiuteris)) {
-                        result.add(kompiuteris);
-                    }
+            for (KompiuterisImpl kompiuteris : result) {
+                if (!kompiuteris.getOs().toLowerCase().contains(os.toLowerCase())) {
+                    temp.add(kompiuteris);
                 }
             }
+            result.removeAll(temp);
         }
+        temp = new ArrayList<>();
         return this;
     }
 
-    public KompiuteriuPaieska maziauNeiKainaDienai(List<KompiuterisImpl> kompiuteriai, Double dienosKaina) {
+    public KompiuteriuPaieska maziauNeiKainaDienai(Double dienosKaina) {
         if (dienosKaina > 0) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (kompiuteris.getDienosKaina() < dienosKaina) {
-                    if (!result.contains(kompiuteris)) {
-                        result.add(kompiuteris);
-                    }
+            for (KompiuterisImpl kompiuteris : result) {
+                if (kompiuteris.getDienosKaina() > dienosKaina) {
+                    temp.add(kompiuteris);
                 }
             }
+            result.removeAll(temp);
         }
+        temp = new ArrayList<>();
         return this;
     }
 
-    public KompiuteriuPaieska maziauNeiKainaSavaitei(List<KompiuterisImpl> kompiuteriai, Double savaitesKaina) {
+    public KompiuteriuPaieska maziauNeiKainaSavaitei(Double savaitesKaina) {
         if (savaitesKaina > 0) {
-            for (KompiuterisImpl kompiuteris : kompiuteriai) {
-                if (kompiuteris.getDienosKaina() < savaitesKaina) {
-                    if (!result.contains(kompiuteris)) {
-                        result.add(kompiuteris);
-                    }
+            for (KompiuterisImpl kompiuteris : result) {
+                if (kompiuteris.getDienosKaina() > savaitesKaina) {
+                    temp.add(kompiuteris);
                 }
             }
+            result.removeAll(temp);
         }
+        temp = new ArrayList<>();
         return this;
     }
 
-    public KompiuteriuPaieska yraLaisviDatai(List<KompiuterisImpl> kompiuteriai, LocalDate data) {
-        for (KompiuterisImpl kompiuteris : kompiuteriai) {
+    public KompiuteriuPaieska yraLaisviDatai(LocalDate data) {
+        for (KompiuterisImpl kompiuteris : result) {
             if (kompiuteris.getGrazinimoData() != null && data.isAfter(kompiuteris.getGrazinimoData())) {
-                if (!result.contains(kompiuteris)) {
-                    result.add(kompiuteris);
-                }
+                temp.add(kompiuteris);
             }
         }
+        result.removeAll(temp);
+        temp = new ArrayList<>();
         return this;
     }
 
