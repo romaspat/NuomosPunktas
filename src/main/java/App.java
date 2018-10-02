@@ -27,7 +27,7 @@ public class App {
         List<KompiuterisImpl> result = new ArrayList<>();
         // visi = np.getKompiuteriaiDAO().gautiVisus();
 
-        result = paieska.tikLaisvi().maziauNeiKainaDienai(18.0).getResult();
+        result = paieska.tikIsnuomoti().pagalPavadinima("n").getResult();
         app.spausdintiSarasa(result);
 
 //        System.out.println("-------------");
