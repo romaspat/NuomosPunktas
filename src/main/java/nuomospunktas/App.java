@@ -1,8 +1,8 @@
-import business.KompiuteriuPaieska;
-import kompiuteriai.KompiuterisImpl;
-import services.KompiuteriaiJsonDAOService;
+package nuomospunktas;
 
-import java.time.LocalDate;
+import nuomospunktas.business.KompiuteriuPaieska;
+import nuomospunktas.kompiuteriai.KompiuterisImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 

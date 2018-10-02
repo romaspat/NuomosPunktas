@@ -1,8 +1,10 @@
-import business.KompiuteriuPaieska;
-import dao.IKompiuteriaiDAO;
-import kompiuteriai.KompiuterisImpl;
-import services.DataType;
-import services.KompiuteriaiDAOServiceFactory;
+package nuomospunktas;
+
+import nuomospunktas.business.KompiuteriuPaieska;
+import nuomospunktas.dao.IKompiuteriaiDAO;
+import nuomospunktas.kompiuteriai.KompiuterisImpl;
+import nuomospunktas.services.DataType;
+import nuomospunktas.services.KompiuteriaiDAOServiceFactory;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,6 +13,8 @@ public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
 
     private IKompiuteriaiDAO<KompiuterisImpl> kompiuteriaiDAO =
             new KompiuteriaiDAOServiceFactory().getInstance(DataType.DEMO);
+
+
 
     private KompiuteriuPaieska kompiuteriuPaieska = new KompiuteriuPaieska(kompiuteriaiDAO.gautiVisus());
 

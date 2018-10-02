@@ -1,4 +1,4 @@
-package kompiuteriai;
+package nuomospunktas.kompiuteriai;
 
 import java.time.LocalDate;
 

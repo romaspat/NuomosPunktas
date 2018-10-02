@@ -1,4 +1,4 @@
-package kompiuteriai;
+package nuomospunktas.kompiuteriai;
 
 public class StacionarusKompiuteris extends KompiuterisImpl {
 

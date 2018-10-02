@@ -1,9 +1,9 @@
-package services;
+package nuomospunktas.services;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import dao.IKompiuteriaiDAO;
-import kompiuteriai.KompiuterisImpl;
+import nuomospunktas.dao.IKompiuteriaiDAO;
+import nuomospunktas.kompiuteriai.KompiuterisImpl;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -18,7 +18,7 @@ import java.util.List;
 public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<KompiuterisImpl> {
 
 
-    private String JSON_FNAME = "kompiuteriai.json";
+    private String JSON_FNAME = "nuomospunktas.business.kompiuteriai.json";
     private List<KompiuterisImpl> kompiuteriai;
 
     public KompiuteriaiJsonDAOService() {

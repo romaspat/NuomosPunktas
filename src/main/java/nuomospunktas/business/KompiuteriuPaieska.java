@@ -1,6 +1,6 @@
-package business;
+package nuomospunktas.business;
 
-import kompiuteriai.KompiuterisImpl;
+import nuomospunktas.kompiuteriai.KompiuterisImpl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

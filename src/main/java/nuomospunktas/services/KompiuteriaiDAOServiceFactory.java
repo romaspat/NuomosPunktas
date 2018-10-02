@@ -1,7 +1,7 @@
-package services;
+package nuomospunktas.services;
 
-import dao.IKompiuteriaiDAO;
-import kompiuteriai.KompiuterisImpl;
+import nuomospunktas.dao.IKompiuteriaiDAO;
+import nuomospunktas.kompiuteriai.KompiuterisImpl;
 
 public class KompiuteriaiDAOServiceFactory {
 

@@ -1,10 +1,10 @@
-package services;
+package nuomospunktas.services;
 
-import dao.IKompiuteriaiDAO;
-import kompiuteriai.KompiuterisImpl;
-import kompiuteriai.NesiojamasKompiuteris;
-import kompiuteriai.PlansetinisKompiuteris;
-import kompiuteriai.StacionarusKompiuteris;
+import nuomospunktas.dao.IKompiuteriaiDAO;
+import nuomospunktas.kompiuteriai.KompiuterisImpl;
+import nuomospunktas.kompiuteriai.NesiojamasKompiuteris;
+import nuomospunktas.kompiuteriai.PlansetinisKompiuteris;
+import nuomospunktas.kompiuteriai.StacionarusKompiuteris;
 
 import java.util.ArrayList;
 import java.util.List;

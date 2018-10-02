@@ -1,4 +1,4 @@
-package dao;
+package nuomospunktas.dao;
 
 import java.util.List;
 
