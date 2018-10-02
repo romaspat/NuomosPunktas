@@ -3,7 +3,7 @@ package nuomospunktas.services;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import nuomospunktas.dao.IKompiuteriaiDAO;
-import nuomospunktas.kompiuteriai.KompiuterisImpl;
+import nuomospunktas.kompiuteriai.Kompiuteris;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -15,19 +15,19 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<KompiuterisImpl> {
+public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris> {
 
 
     private String JSON_FNAME = "nuomospunktas.business.kompiuteriai.json";
-    private List<KompiuterisImpl> kompiuteriai;
+    private List<Kompiuteris> kompiuteriai;
 
-    public KompiuteriaiJsonDAOService() {
-            init();
-    }
+//    public KompiuteriaiJsonDAOService() {
+//            init();
+//    }
 
     @Override
-    public KompiuterisImpl gautiPagalId(int id) {
-        for (KompiuterisImpl kompiuteris : kompiuteriai) {
+    public Kompiuteris gautiPagalId(int id) {
+        for (Kompiuteris kompiuteris : kompiuteriai) {
             if (kompiuteris.getId() == id) {
                 return kompiuteris;
             }
@@ -36,7 +36,7 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<KompiuterisI
     }
 
     @Override
-    public void pridetiKompiuteri(KompiuterisImpl kompiuteris) {
+    public void pridetiKompiuteri(Kompiuteris kompiuteris) {
         kompiuteris.setId(gautiId());
         if (kompiuteriai.add(kompiuteris)) {
             saveList();
@@ -45,7 +45,7 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<KompiuterisI
 
     @Override
     public void ismestiKompiuteri(int id) {
-        for (KompiuterisImpl kompiuteris : kompiuteriai) {
+        for (Kompiuteris kompiuteris : kompiuteriai) {
             if (kompiuteris.getId() == id) {
                 if (kompiuteriai.remove(kompiuteris)) {
                     saveList();
@@ -56,7 +56,7 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<KompiuterisI
     }
 
     @Override
-    public List<KompiuterisImpl> gautiVisus() {
+    public List<Kompiuteris> gautiVisus() {
         return kompiuteriai;
     }
 
@@ -66,7 +66,7 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<KompiuterisI
             if (f.createNewFile()) {
                 Reader reader = new FileReader(f);
 
-                Type listType = new TypeToken<ArrayList<KompiuterisImpl>>() {
+                Type listType = new TypeToken<ArrayList<Kompiuteris>>() {
                 }.getType();
                 kompiuteriai = new Gson().fromJson(reader, listType);
             }
@@ -88,7 +88,7 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<KompiuterisI
 
         int max = 0;
 
-        for (KompiuterisImpl kompiuteris : kompiuteriai) {
+        for (Kompiuteris kompiuteris : kompiuteriai) {
             if (max < kompiuteris.getId()) {
                 max = kompiuteris.getId();
             }

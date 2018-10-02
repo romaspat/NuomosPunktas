@@ -2,7 +2,7 @@ package nuomospunktas.kompiuteriai;
 
 import java.time.LocalDate;
 
-public abstract class KompiuterisImpl implements IKompiuteris {
+public abstract class Kompiuteris implements IKompiuteris {
 
     private int id;
     private String tipas;
@@ -84,54 +84,54 @@ public abstract class KompiuterisImpl implements IKompiuteris {
         this.grazinimoData = grazinimoData;
     }
 
-    public KompiuterisImpl setTipas(String tipas) {
+    public Kompiuteris setTipas(String tipas) {
         this.tipas = tipas;
         return this;
     }
 
-    public KompiuterisImpl setPavadinimas(String pavadinimas) {
+    public Kompiuteris setPavadinimas(String pavadinimas) {
         this.pavadinimas = pavadinimas;
         return this;
     }
 
-    public KompiuterisImpl setDydis(String dydis) {
+    public Kompiuteris setDydis(String dydis) {
         this.dydis = dydis;
         return this;
     }
 
-    public KompiuterisImpl setProcesorius(String procesorius) {
+    public Kompiuteris setProcesorius(String procesorius) {
         this.procesorius = procesorius;
         return this;
     }
 
-    public KompiuterisImpl setAtmintis(String atmintis) {
+    public Kompiuteris setAtmintis(String atmintis) {
         this.atmintis = atmintis;
         return this;
     }
 
-    public KompiuterisImpl setDiskas(String diskas) {
+    public Kompiuteris setDiskas(String diskas) {
         this.diskas = diskas;
         return this;
     }
 
-    public KompiuterisImpl setOs(String os) {
+    public Kompiuteris setOs(String os) {
         this.os = os;
         return this;
     }
 
-    public KompiuterisImpl setDienosKaina(double dienosKaina) {
+    public Kompiuteris setDienosKaina(double dienosKaina) {
         this.dienosKaina = dienosKaina;
         return this;
     }
 
-    public KompiuterisImpl setSavaitesKaina(double savaitesKaina) {
+    public Kompiuteris setSavaitesKaina(double savaitesKaina) {
         this.savaitesKaina = savaitesKaina;
         return this;
     }
 
 
     @Override
-    public KompiuterisImpl setId(int id) {
+    public Kompiuteris setId(int id) {
         this.id = id;
         return this;
     }

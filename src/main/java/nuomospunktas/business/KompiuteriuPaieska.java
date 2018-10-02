@@ -1,6 +1,6 @@
 package nuomospunktas.business;
 
-import nuomospunktas.kompiuteriai.KompiuterisImpl;
+import nuomospunktas.kompiuteriai.Kompiuteris;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,10 +8,10 @@ import java.util.List;
 
 public class KompiuteriuPaieska {
 
-    private List<KompiuterisImpl> result = new ArrayList<>();
-    private List<KompiuterisImpl> temp = new ArrayList<>();
+    private List<Kompiuteris> result = new ArrayList<>();
+    private List<Kompiuteris> temp = new ArrayList<>();
 
-    public KompiuteriuPaieska(List<KompiuterisImpl> result) {
+    public KompiuteriuPaieska(List<Kompiuteris> result) {
         this.result = result;
     }
 
@@ -24,7 +24,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska tikLaisvi() {
             if (result.size() > 0) {
-                for (KompiuterisImpl kompiuteris : result) {
+                for (Kompiuteris kompiuteris : result) {
                     if (kompiuteris.getGrazinimoData() != null) {
                         if (kompiuteris.getGrazinimoData().isAfter(LocalDate.now())) {
                             temp.add(kompiuteris);
@@ -39,7 +39,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska tikIsnuomoti() {
         if (result.size() > 0) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (kompiuteris.getGrazinimoData() == null) {
                         temp.add(kompiuteris);
                 }
@@ -52,7 +52,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska pagalPavadinima(String pavadinimas) {
         if (!pavadinimas.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (!kompiuteris.getPavadinimas().toLowerCase().contains(pavadinimas.toLowerCase())) {
                     temp.add(kompiuteris);
                 }
@@ -65,7 +65,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska pagalTipa(String tipas) {
         if (!tipas.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (!kompiuteris.getTipas().toLowerCase().contains(tipas.toLowerCase())) {
                     temp.add(kompiuteris);
                 }
@@ -78,7 +78,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska pagalDydi(String dydis) {
         if (!dydis.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (!kompiuteris.getDydis().toLowerCase().contains(dydis.toLowerCase())) {
                     temp.add(kompiuteris);
                 }
@@ -91,7 +91,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska pagalProcesoriu(String procesorius) {
         if (!procesorius.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (!kompiuteris.getProcesorius().toLowerCase().contains(procesorius.toLowerCase())) {
                     temp.add(kompiuteris);
                 }
@@ -104,7 +104,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska pagalAtminti(String atmintis) {
         if (!atmintis.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (!kompiuteris.getAtmintis().toLowerCase().contains(atmintis.toLowerCase())) {
                     temp.add(kompiuteris);
                 }
@@ -117,7 +117,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska pagalDiska(String diskas) {
         if (!diskas.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (!kompiuteris.getDiskas().toLowerCase().contains(diskas.toLowerCase())) {
                     temp.add(kompiuteris);
                 }
@@ -130,7 +130,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska pagalOs(String os) {
         if (!os.isEmpty()) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (!kompiuteris.getOs().toLowerCase().contains(os.toLowerCase())) {
                     temp.add(kompiuteris);
                 }
@@ -143,7 +143,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska maziauNeiKainaDienai(Double dienosKaina) {
         if (dienosKaina > 0) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (kompiuteris.getDienosKaina() > dienosKaina) {
                     temp.add(kompiuteris);
                 }
@@ -156,7 +156,7 @@ public class KompiuteriuPaieska {
 
     public KompiuteriuPaieska maziauNeiKainaSavaitei(Double savaitesKaina) {
         if (savaitesKaina > 0) {
-            for (KompiuterisImpl kompiuteris : result) {
+            for (Kompiuteris kompiuteris : result) {
                 if (kompiuteris.getDienosKaina() > savaitesKaina) {
                     temp.add(kompiuteris);
                 }
@@ -168,7 +168,7 @@ public class KompiuteriuPaieska {
     }
 
     public KompiuteriuPaieska yraLaisviDatai(LocalDate data) {
-        for (KompiuterisImpl kompiuteris : result) {
+        for (Kompiuteris kompiuteris : result) {
             if (kompiuteris.getGrazinimoData() != null && data.isAfter(kompiuteris.getGrazinimoData())) {
                 temp.add(kompiuteris);
             }
@@ -178,7 +178,7 @@ public class KompiuteriuPaieska {
         return this;
     }
 
-    public List<KompiuterisImpl> getResult() {
+    public List<Kompiuteris> getResult() {
         return result;
     }
 

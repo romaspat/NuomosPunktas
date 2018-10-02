@@ -1,6 +1,6 @@
 package nuomospunktas.kompiuteriai;
 
-public class StacionarusKompiuteris extends KompiuterisImpl {
+public class StacionarusKompiuteris extends Kompiuteris {
 
     public StacionarusKompiuteris() {
         super();

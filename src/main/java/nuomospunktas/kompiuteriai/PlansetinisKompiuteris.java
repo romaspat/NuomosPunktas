@@ -1,6 +1,6 @@
 package nuomospunktas.kompiuteriai;
 
-public class PlansetinisKompiuteris extends KompiuterisImpl {
+public class PlansetinisKompiuteris extends Kompiuteris {
 
     public PlansetinisKompiuteris() {
         super();

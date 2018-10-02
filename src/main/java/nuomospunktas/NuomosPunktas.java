@@ -2,23 +2,23 @@ package nuomospunktas;
 
 import nuomospunktas.business.KompiuteriuPaieska;
 import nuomospunktas.dao.IKompiuteriaiDAO;
-import nuomospunktas.kompiuteriai.KompiuterisImpl;
+import nuomospunktas.kompiuteriai.Kompiuteris;
 import nuomospunktas.services.DataType;
 import nuomospunktas.services.KompiuteriaiDAOServiceFactory;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
+public class NuomosPunktas implements NuomosOperacijos<Kompiuteris> {
 
-    private IKompiuteriaiDAO<KompiuterisImpl> kompiuteriaiDAO =
+    private IKompiuteriaiDAO<Kompiuteris> kompiuteriaiDAO =
             new KompiuteriaiDAOServiceFactory().getInstance(DataType.DEMO);
 
 
 
     private KompiuteriuPaieska kompiuteriuPaieska = new KompiuteriuPaieska(kompiuteriaiDAO.gautiVisus());
 
-    public List<KompiuterisImpl> ieskotiKompiuteriu() {
+    public List<Kompiuteris> ieskotiKompiuteriu() {
         try {
             return kompiuteriuPaieska.visiKompiuteriai().getResult();
         } catch (RuntimeException e) {
@@ -27,7 +27,7 @@ public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
         return null;
     }
 
-    public List<KompiuterisImpl> ieskotiKompiuteriu(boolean laisvi) {
+    public List<Kompiuteris> ieskotiKompiuteriu(boolean laisvi) {
         if (laisvi) {
             return kompiuteriuPaieska.tikLaisvi().getResult();
         } else {
@@ -56,7 +56,7 @@ public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
 
     }
 
-    IKompiuteriaiDAO<KompiuterisImpl> getKompiuteriaiDAO() {
+    IKompiuteriaiDAO<Kompiuteris> getKompiuteriaiDAO() {
         return kompiuteriaiDAO;
     }
 }

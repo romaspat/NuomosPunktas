@@ -1,7 +1,7 @@
 package nuomospunktas.services;
 
 import nuomospunktas.dao.IKompiuteriaiDAO;
-import nuomospunktas.kompiuteriai.KompiuterisImpl;
+import nuomospunktas.kompiuteriai.Kompiuteris;
 import nuomospunktas.kompiuteriai.NesiojamasKompiuteris;
 import nuomospunktas.kompiuteriai.PlansetinisKompiuteris;
 import nuomospunktas.kompiuteriai.StacionarusKompiuteris;
@@ -9,9 +9,9 @@ import nuomospunktas.kompiuteriai.StacionarusKompiuteris;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<KompiuterisImpl> {
+public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<Kompiuteris> {
 
-    private List<KompiuterisImpl> kompiuteriai;
+    private List<Kompiuteris> kompiuteriai;
     {
         kompiuteriai = new ArrayList<>();
         kompiuteriai.add(new PlansetinisKompiuteris().setId(gautiId()).setTipas("PK").setPavadinimas("Samsung T580").
@@ -32,8 +32,8 @@ public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<KompiuterisI
     }
 
     @Override
-    public KompiuterisImpl gautiPagalId(int id) {
-        for (KompiuterisImpl kompiuteris : kompiuteriai) {
+    public Kompiuteris gautiPagalId(int id) {
+        for (Kompiuteris kompiuteris : kompiuteriai) {
             if (kompiuteris.getId() == id) {
                 return kompiuteris;
             }
@@ -42,14 +42,14 @@ public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<KompiuterisI
     }
 
     @Override
-    public void pridetiKompiuteri(KompiuterisImpl kompiuteris) {
+    public void pridetiKompiuteri(Kompiuteris kompiuteris) {
         kompiuteris.setId(gautiId());
         kompiuteriai.add(kompiuteris);
     }
 
     @Override
     public void ismestiKompiuteri(int id) {
-        for (KompiuterisImpl kompiuteris : kompiuteriai) {
+        for (Kompiuteris kompiuteris : kompiuteriai) {
             if (kompiuteris.getId() == id) {
                 kompiuteriai.remove(kompiuteris);
                 return;
@@ -59,7 +59,7 @@ public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<KompiuterisI
     }
 
     @Override
-    public List<KompiuterisImpl> gautiVisus() {
+    public List<Kompiuteris> gautiVisus() {
         return kompiuteriai;
     }
 
@@ -67,7 +67,7 @@ public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<KompiuterisI
 
         int max = 0;
 
-        for (KompiuterisImpl kompiuteris : kompiuteriai) {
+        for (Kompiuteris kompiuteris : kompiuteriai) {
             if (max < kompiuteris.getId()) {
                 max = kompiuteris.getId();
             }
