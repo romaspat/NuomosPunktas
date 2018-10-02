@@ -3,9 +3,9 @@ import java.util.List;
 
 public interface NuomosOperacijos<T> {
 
-    List<T> parodytiSarasa(boolean pozymis); //jei true grazins isnuomotus
+    List<T> parodytiLaisvus(boolean pozymis);
 
-    List<T> parodytiLaisvusDatai(LocalDate data); //grazins laisvus datai
+    List<T> parodytiLaisvus(LocalDate data);
 
     void isnuomotiKompiuteri(int id, int terminas);
 

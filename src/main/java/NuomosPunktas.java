@@ -1,7 +1,6 @@
 import dao.IKompiuteriaiDAO;
 import kompiuteriai.KompiuterisImpl;
 import services.DataType;
-import services.KompiuteriaiDAODemoService;
 import services.KompiuteriaiDAOServiceFactory;
 
 import java.time.LocalDate;
@@ -10,16 +9,17 @@ import java.util.List;
 
 public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
 
-    private IKompiuteriaiDAO<KompiuterisImpl> dAOService =
+    private IKompiuteriaiDAO<KompiuterisImpl> kompiuteriaiDAO =
             new KompiuteriaiDAOServiceFactory().getInstance(DataType.DEMO);
 
+    private List<KompiuterisImpl> kompiuteriai = kompiuteriaiDAO.gautiVisus();
 
     @Override
-    public List<KompiuterisImpl> parodytiSarasa(boolean pozymis) {
+    public List<KompiuterisImpl> parodytiLaisvus(boolean pozymis) {
         List<KompiuterisImpl> temp = new ArrayList<>();
 
-        for (KompiuterisImpl kompiuterisImpl : dAOService.gautiVisus()) {
-            if (pozymis ^= (kompiuterisImpl.getGrazinimoData() != null)) {
+        for (KompiuterisImpl kompiuterisImpl : kompiuteriai) {
+            if (pozymis ^ (kompiuterisImpl.getGrazinimoData() != null)) {
                 temp.add(kompiuterisImpl);
             }
         }
@@ -27,11 +27,11 @@ public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
     }
 
     @Override
-    public List<KompiuterisImpl> parodytiLaisvusDatai(LocalDate data) {
+    public List<KompiuterisImpl> parodytiLaisvus(LocalDate data) {
         List<KompiuterisImpl> temp = new ArrayList<>();
-        if (!dAOService.gautiVisus().isEmpty()) {
-            for (KompiuterisImpl kompiuteris : dAOService.gautiVisus()) {
-                if (kompiuteris.getGrazinimoData()!=null && data.isAfter(kompiuteris.getGrazinimoData())) {
+        if (!kompiuteriaiDAO.gautiVisus().isEmpty()) {
+            for (KompiuterisImpl kompiuteris : kompiuteriai) {
+                if (kompiuteris.getGrazinimoData() != null && data.isAfter(kompiuteris.getGrazinimoData())) {
                     temp.add(kompiuteris);
                 }
             }
@@ -42,17 +42,22 @@ public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
 
     @Override
     public void isnuomotiKompiuteri(int id, int terminas) {
-        dAOService.gautiVisus().get(id).setIsnuomavimoData(LocalDate.now());
-        dAOService.gautiVisus().get(id).setGrazinimoData(LocalDate.now().plusDays(terminas));
+        if (kompiuteriaiDAO.gautiVisus().size()> id && id>=0) {
+            kompiuteriaiDAO.gautiVisus().get(id).setIsnuomavimoData(LocalDate.now());
+            kompiuteriaiDAO.gautiVisus().get(id).setGrazinimoData(LocalDate.now().plusDays(terminas));
+        }
     }
 
     @Override
     public void grazintiKompiuteri(int id) {
-        dAOService.gautiVisus().get(id).setIsnuomavimoData(null);
-        dAOService.gautiVisus().get(id).setGrazinimoData(null);
+        if (kompiuteriaiDAO.gautiVisus().size()>id&&id>=0) {
+            kompiuteriaiDAO.gautiVisus().get(id).setIsnuomavimoData(null);
+            kompiuteriaiDAO.gautiVisus().get(id).setGrazinimoData(null);
+        }
+
     }
 
-    IKompiuteriaiDAO<KompiuterisImpl> getdAOService() {
-        return dAOService;
+    IKompiuteriaiDAO<KompiuterisImpl> getKompiuteriaiDAO() {
+        return kompiuteriaiDAO;
     }
 }
