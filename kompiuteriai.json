@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "tipas": "NK",
+    "tipas": "NesiojamasKompiuteris",
     "pavadinimas": "HP Probook 450",
     "dydis": "15\"",
     "procesorius": "2Ghz",
@@ -13,7 +13,7 @@
   },
   {
     "id": 2,
-    "tipas": "NKK",
+    "tipas": "NesiojamasKompiuteris",
     "pavadinimas": "Lenovo V110",
     "dydis": "15\"",
     "procesorius": "2Ghz",
@@ -25,7 +25,7 @@
   },
   {
     "id": 3,
-    "tipas": "NK",
+    "tipas": "NesiojamasKompiuteris",
     "pavadinimas": "HP Probook 430",
     "dydis": "13\"",
     "procesorius": "2Ghz",
@@ -37,7 +37,7 @@
   },
   {
     "id": 4,
-    "tipas": "PK",
+    "tipas": "PlansetinisKompiuteris",
     "pavadinimas": "Samsung T580",
     "dydis": "10\"",
     "procesorius": "2Ghz",
@@ -49,7 +49,7 @@
   },
   {
     "id": 5,
-    "tipas": "PK",
+    "tipas": "PlansetinisKompiuteris",
     "pavadinimas": "Lenovo Tab3",
     "dydis": "10\"",
     "procesorius": "2Ghz",
@@ -61,7 +61,7 @@
   },
   {
     "id": 6,
-    "tipas": "SK",
+    "tipas": "StacionarusKompiuteris",
     "pavadinimas": "Dell Optiplex 3010",
     "dydis": "SFF",
     "procesorius": "3Ghz",
@@ -73,7 +73,7 @@
   },
   {
     "id": 7,
-    "tipas": "SK",
+    "tipas": "StacionarusKompiuteris",
     "pavadinimas": "HP Desktop 600",
     "dydis": "SFF",
     "procesorius": "3Ghz",
