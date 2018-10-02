@@ -21,6 +21,10 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<KompiuterisI
     private String JSON_FNAME = "kompiuteriai.json";
     private List<KompiuterisImpl> kompiuteriai;
 
+//    public KompiuteriaiJsonDAOService() {
+//            init();
+//    }
+
     @Override
     public KompiuterisImpl gautiPagalId(int id) {
         for (KompiuterisImpl kompiuteris : kompiuteriai) {

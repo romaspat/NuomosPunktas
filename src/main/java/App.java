@@ -1,5 +1,6 @@
 import business.KompiuteriuPaieska;
 import kompiuteriai.KompiuterisImpl;
+import services.KompiuteriaiJsonDAOService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,8 +12,10 @@ public class App {
 
         App app = new App();
         NuomosPunktas np = new NuomosPunktas();
-
         KompiuteriuPaieska paieska = new KompiuteriuPaieska(np.getKompiuteriaiDAO().gautiVisus());
+
+
+
 
 
         np.isnuomotiKompiuteri(2, 10);
@@ -24,7 +27,7 @@ public class App {
         List<KompiuterisImpl> result = new ArrayList<>();
         // visi = np.getKompiuteriaiDAO().gautiVisus();
 
-        result = paieska.yraLaisvi().maziauNeiKainaDienai(18.0).getResult();
+        result = paieska.tikLaisvi().maziauNeiKainaDienai(18.0).getResult();
         app.spausdintiSarasa(result);
 
 //        System.out.println("-------------");

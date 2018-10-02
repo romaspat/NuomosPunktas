@@ -15,13 +15,33 @@ public class KompiuteriuPaieska {
         this.result = result;
     }
 
-    public KompiuteriuPaieska yraLaisvi() {
+    public KompiuteriuPaieska visiKompiuteriai() {
+        if (result.size() > 100) {
+            throw new RuntimeException();
+        }
+        return this;
+    }
+
+    public KompiuteriuPaieska tikLaisvi() {
+            if (result.size() > 0) {
+                for (KompiuterisImpl kompiuteris : result) {
+                    if (kompiuteris.getGrazinimoData() != null) {
+                        if (kompiuteris.getGrazinimoData().isAfter(LocalDate.now())) {
+                            temp.add(kompiuteris);
+                        }
+                    }
+                }
+                result.removeAll(temp);
+                temp = new ArrayList<>();
+            }
+        return this;
+    }
+
+    public KompiuteriuPaieska tikIsnuomoti() {
         if (result.size() > 0) {
             for (KompiuterisImpl kompiuteris : result) {
-                if (kompiuteris.getGrazinimoData() != null) {
-                    if (kompiuteris.getGrazinimoData().isAfter(LocalDate.now())) {
+                if (kompiuteris.getGrazinimoData() == null) {
                         temp.add(kompiuteris);
-                    }
                 }
             }
             result.removeAll(temp);

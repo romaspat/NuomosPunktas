@@ -15,6 +15,22 @@ public class NuomosPunktas implements NuomosOperacijos<KompiuterisImpl> {
 
     private KompiuteriuPaieska kompiuteriuPaieska = new KompiuteriuPaieska(kompiuteriaiDAO.gautiVisus());
 
+    public List<KompiuterisImpl> ieskotiKompiuteriu(){
+        try {
+            return kompiuteriuPaieska.visiKompiuteriai().getResult();
+        }
+        catch (RuntimeException e) {
+            System.out.println("Exception occurred");
+        }
+        return null;
+    }
+
+
+
+    public List<KompiuterisImpl> ieskotiKompiuteriu(boolean tikLaisvi){
+        return kompiuteriuPaieska.tikLaisvi().getResult();
+    }
+
 
     @Override
     public void isnuomotiKompiuteri(int id, int terminas) {
