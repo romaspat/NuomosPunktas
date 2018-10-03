@@ -95,7 +95,7 @@ public class KompiuteriuPaieskaMapas {
                 if (kompiuteris.getGrazinimoData() != null) {
                     grazinimoData = kompiuteris.getGrazinimoData().isBefore(LocalDate.parse(kriterijai.get("grazinimoData")));
                 } else {
-                    grazinimoData = false;
+                    grazinimoData = true;
                 }
             } else {
                 grazinimoData = true;
