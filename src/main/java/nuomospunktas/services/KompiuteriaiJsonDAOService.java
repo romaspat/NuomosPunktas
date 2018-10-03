@@ -21,9 +21,28 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris>
     private String JSON_FNAME = "nuomospunktas.business.kompiuteriai.json";
     private List<Kompiuteris> kompiuteriai;
 
-//    public KompiuteriaiJsonDAOService() {
-//            init();
-//    }
+    {
+        File f = new File(JSON_FNAME);
+        if (!f.exists()) {
+            try {
+                f.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+
+            Reader reader = new FileReader(f);
+
+            Type listType = new TypeToken<ArrayList<Kompiuteris>>() {
+            }.getType();
+
+            kompiuteriai = new Gson().fromJson(reader,listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     public Kompiuteris gautiPagalId(int id) {
@@ -58,22 +77,6 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris>
     @Override
     public List<Kompiuteris> gautiVisus() {
         return kompiuteriai;
-    }
-
-    private void init() {
-        File f = new File(JSON_FNAME);
-        try {
-            if (f.createNewFile()) {
-                Reader reader = new FileReader(f);
-
-                Type listType = new TypeToken<ArrayList<Kompiuteris>>() {
-                }.getType();
-                kompiuteriai = new Gson().fromJson(reader, listType);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     private void saveList() {

@@ -2,7 +2,7 @@ package nuomospunktas.kompiuteriai;
 
 import java.time.LocalDate;
 
-public abstract class Kompiuteris implements IKompiuteris {
+public class Kompiuteris {
 
     private int id;
     private String tipas;
@@ -17,7 +17,7 @@ public abstract class Kompiuteris implements IKompiuteris {
     private LocalDate isnuomavimoData = null;
     private LocalDate grazinimoData = null;
 
-    @Override
+
     public int getId() {
         return id;
     }
@@ -26,52 +26,52 @@ public abstract class Kompiuteris implements IKompiuteris {
         return tipas;
     }
 
-    @Override
+
     public String getPavadinimas() {
         return pavadinimas;
     }
 
-    @Override
+
     public String getDydis() {
         return dydis;
     }
 
-    @Override
+
     public String getProcesorius() {
         return procesorius;
     }
 
-    @Override
+
     public String getAtmintis() {
         return atmintis;
     }
 
-    @Override
+
     public String getDiskas() {
         return diskas;
     }
 
-    @Override
+
     public String getOs() {
         return os;
     }
 
-    @Override
+
     public Double getDienosKaina() {
         return dienosKaina;
     }
 
-    @Override
+
     public Double getSavaitesKaina() {
         return savaitesKaina;
     }
 
-    @Override
+
     public LocalDate getIsnuomavimoData() {
         return isnuomavimoData;
     }
 
-    @Override
+
     public LocalDate getGrazinimoData() {
         return grazinimoData;
     }
@@ -130,7 +130,7 @@ public abstract class Kompiuteris implements IKompiuteris {
     }
 
 
-    @Override
+
     public Kompiuteris setId(int id) {
         this.id = id;
         return this;
@@ -138,6 +138,12 @@ public abstract class Kompiuteris implements IKompiuteris {
 
     @Override
     public String toString() {
+        return "ID: " + id + " " + tipas + " " + pavadinimas + " " + dydis + " " + procesorius + " " + atmintis + " "
+                + diskas + " " + os + " " + dienosKaina + " " + savaitesKaina + " " + isnuomavimoData
+                + " " + grazinimoData;
+    }
+
+    public String toHumanString() {
         String s;
         if (grazinimoData != null) {
             s = "IŠNUOMOTAS. Gražinimo data: " + grazinimoData;

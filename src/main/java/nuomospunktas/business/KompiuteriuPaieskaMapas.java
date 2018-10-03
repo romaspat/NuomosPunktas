@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class KompiuteriuPaieskaMapas {
 
+
     public List<Kompiuteris> ieskoti(List<Kompiuteris> kompiuteriai, Map<String, String> kriterijai) {
         boolean tipas;
         boolean pavadinimas;
@@ -19,7 +20,6 @@ public class KompiuteriuPaieskaMapas {
         boolean os;
         boolean dienosKaina;
         boolean savaitesKaina;
-        boolean isnuomavimoData;
         boolean grazinimoData;
 
 
@@ -35,7 +35,6 @@ public class KompiuteriuPaieskaMapas {
             os = false;
             dienosKaina = false;
             savaitesKaina = false;
-            isnuomavimoData = false;
             grazinimoData = false;
 
             if (kriterijai.containsKey("tipas") && kriterijai.get("tipas") != null) {
@@ -92,21 +91,18 @@ public class KompiuteriuPaieskaMapas {
                 savaitesKaina = true;
             }
 
-            if (kriterijai.containsKey("isnuomavimoData") && kriterijai.get("isnuomavimoData") == null) {
-                isnuomavimoData = true;
-            }
-
             if (kriterijai.containsKey("grazinimoData") && kriterijai.get("grazinimoData") != null) {
-                grazinimoData = kompiuteris.getGrazinimoData().isAfter(LocalDate.parse(kriterijai.get("grazinimoData")));
+                if (kompiuteris.getGrazinimoData() != null) {
+                    grazinimoData = kompiuteris.getGrazinimoData().isBefore(LocalDate.parse(kriterijai.get("grazinimoData")));
+                } else {
+                    grazinimoData = false;
+                }
             } else {
                 grazinimoData = true;
             }
 
-
-
-
             if (tipas && pavadinimas && dydis && procesorius && atmintis
-                && diskas && os && dienosKaina && savaitesKaina && isnuomavimoData && grazinimoData) {
+                    && diskas && os && dienosKaina && savaitesKaina && grazinimoData) {
                 result.add(kompiuteris);
             }
 
