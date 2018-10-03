@@ -14,12 +14,16 @@ public class App {
 
         App app = new App();
         NuomosPunktas np = new NuomosPunktas();
-        KompiuteriuPaieska paieska = new KompiuteriuPaieska(np.getKompiuteriaiDAO().gautiVisus());
-        app.spausdintiSarasa(np.getKompiuteriaiDAO().gautiVisus());
+       // KompiuteriuPaieska paieska = new KompiuteriuPaieska(np.getKompiuteriaiDAO().gautiVisus());
+        //app.spausdintiSarasa(np.getKompiuteriaiDAO().gautiVisus());
 
-//        np.isnuomotiKompiuteri(2, 10);
-//        np.isnuomotiKompiuteri(4, 15);
-//        np.isnuomotiKompiuteri(0, 1);
+        np.isnuomotiKompiuteri(2, 10);
+        np.isnuomotiKompiuteri(4, 15);
+        np.isnuomotiKompiuteri(0, 1);
+
+//        np.grazintiKompiuteri(0);
+//        np.grazintiKompiuteri(4);
+//        np.grazintiKompiuteri(2);
 
         System.out.println("-------------");
         //List<Kompiuteris> visi = new ArrayList<>();
@@ -27,13 +31,13 @@ public class App {
         // visi = np.getKompiuteriaiDAO().gautiVisus();
 
         Map<String, String> kriterijai = new HashMap<>();
-        kriterijai.put("pavadinimas", "sams");
-        kriterijai.put("dydis", "10");
-//        kriterijai.put("grazinimoData", "2018-10-20");
+//        kriterijai.put("pavadinimas", "sams");
+//        kriterijai.put("dydis", "10");
+        kriterijai.put("grazinimoData", "2018-10-20");
         result = np.ieskotiKompiuteriu(kriterijai);
 
         //  result = paieska.tikIsnuomoti().pagalPavadinima("n").getResult();
-       app.spausdintiSarasa(result);
+        app.spausdintiSarasa(result);
 
 
 //        System.out.println("-------------");
@@ -47,7 +51,7 @@ public class App {
     }
 
     private void spausdintiSarasa(List<Kompiuteris> sarasas) {
-        if (sarasas!=null) {
+        if (sarasas != null) {
             for (Kompiuteris kompiuteris : sarasas) {
                 System.out.println(kompiuteris.toHumanString());
             }

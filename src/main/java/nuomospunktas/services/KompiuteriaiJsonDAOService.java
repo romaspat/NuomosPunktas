@@ -71,6 +71,10 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris>
         }
     }
 
+    public void atnaujintiSarasa() {
+        saveList();
+    }
+
     @Override
     public List<Kompiuteris> gautiVisus() {
         return kompiuteriai;
@@ -78,7 +82,13 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris>
 
     private void saveList() {
         try {
-            FileUtils.writeStringToFile(new File(JSON_FNAME), new Gson().toJson(kompiuteriai), StandardCharsets.UTF_8, false);
+            ClassLoader classLoader = getClass().getClassLoader();
+            File f = new File(classLoader.getResource(JSON_FNAME).getFile());
+
+            if (!f.exists()) {
+                f.createNewFile();
+            }
+            FileUtils.writeStringToFile(f, new Gson().toJson(kompiuteriai), StandardCharsets.UTF_8, false);
         } catch (IOException e) {
             e.printStackTrace();
         }
