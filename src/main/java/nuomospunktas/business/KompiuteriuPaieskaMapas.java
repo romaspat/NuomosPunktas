@@ -3,6 +3,7 @@ package nuomospunktas.business;
 import nuomospunktas.kompiuteriai.Kompiuteris;
 import org.springframework.stereotype.Component;
 
+import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,14 +82,19 @@ public class KompiuteriuPaieskaMapas {
                 os = true;
             }
 
-            if (kriterijai.containsKey("dienosKaina") && kriterijai.get("dienosKaina") != null) {
+            if (kriterijai.containsKey("dienosKaina") && kriterijai.get("dienosKaina") != null
+                    && (arSkaicius(kriterijai.get("dienosKaina")))) {
                 dienosKaina = kompiuteris.getDienosKaina() <= Double.parseDouble(kriterijai.get("dienosKaina"));
             } else {
                 dienosKaina = true;
             }
 
-            if (kriterijai.containsKey("savaitesKaina") && kriterijai.get("savaitesKaina") != null) {
-                savaitesKaina = kompiuteris.getSavaitesKaina() <= Double.parseDouble(kriterijai.get("savaitesKaina"));
+            if (kriterijai.containsKey("savaitesKaina") && kriterijai.get("savaitesKaina") != null
+                    && (arSkaicius(kriterijai.get("savaitesKaina")))) {
+
+                if (arSkaicius(kriterijai.get("savaitesKaina"))) {
+                    savaitesKaina = kompiuteris.getSavaitesKaina() <= Double.parseDouble(kriterijai.get("savaitesKaina"));
+                }
             } else {
                 savaitesKaina = true;
             }
@@ -110,6 +116,28 @@ public class KompiuteriuPaieskaMapas {
 
         }
         return result;
+    }
+
+    private boolean arSkaicius(String str) {
+
+        DecimalFormatSymbols currentLocaleSymbols = DecimalFormatSymbols.getInstance();
+        char minusZenklas = currentLocaleSymbols.getMinusSign();
+
+        if (!Character.isDigit(str.charAt(0)) && str.charAt(0) != minusZenklas) return false;
+
+        boolean arYraSeparatorius = false;
+        char separatorius = currentLocaleSymbols.getDecimalSeparator();
+
+        for (char c : str.substring(1).toCharArray()) {
+            if (!Character.isDigit(c)) {
+                if (c == separatorius && !arYraSeparatorius) {
+                    arYraSeparatorius = true;
+                    continue;
+                }
+                return false;
+            }
+        }
+        return true;
     }
 
 }
