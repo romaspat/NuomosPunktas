@@ -18,27 +18,24 @@ import java.util.List;
 public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris> {
 
 
-    private String JSON_FNAME = "nuomospunktas.business.kompiuteriai.json";
+    private String JSON_FNAME = "kompiuteriai.json";
     private List<Kompiuteris> kompiuteriai;
 
     {
-        File f = new File(JSON_FNAME);
-        if (!f.exists()) {
-            try {
-                f.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        ClassLoader classLoader = getClass().getClassLoader();
         try {
+            File f = new File(classLoader.getResource(JSON_FNAME).getFile());
 
+            if (!f.exists()) {
+                f.createNewFile();
+            }
             Reader reader = new FileReader(f);
 
             Type listType = new TypeToken<ArrayList<Kompiuteris>>() {
             }.getType();
 
-            kompiuteriai = new Gson().fromJson(reader,listType);
-        } catch (IOException e) {
+            kompiuteriai = new Gson().fromJson(reader, listType);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -47,7 +47,7 @@ public class App {
     }
 
     private void spausdintiSarasa(List<Kompiuteris> sarasas) {
-        if (!sarasas.isEmpty()) {
+        if (sarasas!=null) {
             for (Kompiuteris kompiuteris : sarasas) {
                 System.out.println(kompiuteris.toHumanString());
             }
