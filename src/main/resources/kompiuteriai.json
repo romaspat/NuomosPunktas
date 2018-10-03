@@ -9,17 +9,7 @@
     "diskas": "160Gb",
     "os": "Windows 10",
     "dienosKaina": 15.0,
-    "savaitesKaina": 60.0,
-    "isnuomavimoData": {
-      "year": 2018,
-      "month": 10,
-      "day": 3
-    },
-    "grazinimoData": {
-      "year": 2018,
-      "month": 10,
-      "day": 4
-    }
+    "savaitesKaina": 60.0
   },
   {
     "id": 1,
@@ -43,17 +33,7 @@
     "diskas": "256Gb",
     "os": "Windows 10",
     "dienosKaina": 20.0,
-    "savaitesKaina": 80.0,
-    "isnuomavimoData": {
-      "year": 2018,
-      "month": 10,
-      "day": 3
-    },
-    "grazinimoData": {
-      "year": 2018,
-      "month": 10,
-      "day": 13
-    }
+    "savaitesKaina": 80.0
   },
   {
     "id": 3,
@@ -77,17 +57,7 @@
     "diskas": "64Gb",
     "os": "Android",
     "dienosKaina": 15.0,
-    "savaitesKaina": 60.0,
-    "isnuomavimoData": {
-      "year": 2018,
-      "month": 10,
-      "day": 3
-    },
-    "grazinimoData": {
-      "year": 2018,
-      "month": 10,
-      "day": 18
-    }
+    "savaitesKaina": 60.0
   },
   {
     "id": 5,

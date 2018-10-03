@@ -2,10 +2,15 @@ package nuomospunktas.services;
 
 import nuomospunktas.dao.IKompiuteriaiDAO;
 import nuomospunktas.kompiuteriai.Kompiuteris;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Service
+@Qualifier(value = "kompiuteriaiDemo")
 public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<Kompiuteris> {
 
     private List<Kompiuteris> kompiuteriai;

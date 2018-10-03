@@ -5,6 +5,8 @@ import com.google.gson.reflect.TypeToken;
 import nuomospunktas.dao.IKompiuteriaiDAO;
 import nuomospunktas.kompiuteriai.Kompiuteris;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileReader;
@@ -15,6 +17,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
+@Qualifier(value = "kompiuteriaiJson")
 public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris> {
 
 
@@ -89,9 +93,11 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris>
                 f.createNewFile();
             }
             FileUtils.writeStringToFile(f, new Gson().toJson(kompiuteriai), StandardCharsets.UTF_8, false);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     private int gautiId() {
