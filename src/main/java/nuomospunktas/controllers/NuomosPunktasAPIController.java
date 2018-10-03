@@ -3,7 +3,6 @@ package nuomospunktas.controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import nuomospunktas.NuomosPunktas;
 import nuomospunktas.business.KompiuteriuPaieskaMapas;
 import nuomospunktas.kompiuteriai.Kompiuteris;
 import nuomospunktas.services.KompiuteriaiDAOFactSpr;
@@ -43,4 +42,6 @@ public class NuomosPunktasAPIController {
         }
         return paieskaMapas.ieskoti(kompiuteriai.getInstance().gautiVisus(),kriterijaiMap);
     }
+
+
 }
