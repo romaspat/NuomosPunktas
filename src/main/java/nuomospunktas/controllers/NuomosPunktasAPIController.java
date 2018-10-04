@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,6 +21,11 @@ import java.util.Map;
 @RestController
 @RequestMapping("/nuoma")
 public class NuomosPunktasAPIController {
+
+    @PostMapping("/admin/{data}")
+    public void changeDataType(@PathVariable("data") String data){
+            kompiuteriai.setDataType(data);
+    }
 
     @Autowired
     private KompiuteriaiDAOFactSpr kompiuteriai;

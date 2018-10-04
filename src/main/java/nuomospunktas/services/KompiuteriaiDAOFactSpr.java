@@ -14,6 +14,7 @@ public class KompiuteriaiDAOFactSpr {
     @Value("${dataType:demo}")
     private String dataType;
 
+
     @Autowired
     @Qualifier(value = "kompiuteriaiDemo")
     private KompiuteriaiDAODemoService kompiuteriaiDemo;
@@ -33,5 +34,13 @@ public class KompiuteriaiDAOFactSpr {
             default:
                 throw new RuntimeException();
         }
+    }
+
+    public String getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(String dataType) {
+        this.dataType = dataType;
     }
 }
