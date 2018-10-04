@@ -8,10 +8,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Component
 public class KompiuteriuPaieskaMapas {
 
+
+    private Kompiuteris kompiuteris;
 
     public List<Kompiuteris> ieskoti(List<Kompiuteris> kompiuteriai, Map<String, String> kriterijai) {
         boolean tipas;
@@ -25,6 +28,7 @@ public class KompiuteriuPaieskaMapas {
         boolean savaitesKaina;
         boolean grazinimoData;
 
+       // PaieskosKey paieskosKey;
 
         List<Kompiuteris> result = new ArrayList<>();
 
@@ -39,6 +43,20 @@ public class KompiuteriuPaieskaMapas {
             dienosKaina = false;
             savaitesKaina = false;
             grazinimoData = false;
+
+//            boolean arYra = false;
+//
+//            Set<String> kriterijuKeys = kriterijai.keySet();
+//            for (String key: kriterijuKeys) {
+//                for (PaieskosKey value : PaieskosKey.values()) {
+//                    if (kriterijuKeys.contains(value.toString())&& kriterijai.get(key)!=null){
+//                      arYra =  kompiuteris.toString().toLowerCase().contains(kriterijai.get(key).toLowerCase());
+//                    }
+//                }
+//            }
+//            if (arYra){
+//                result.add(kompiuteris);
+//            }
 
             if (kriterijai.containsKey("tipas") && kriterijai.get("tipas") != null) {
                 tipas = kompiuteris.getTipas().toLowerCase().contains(kriterijai.get("tipas").toLowerCase());

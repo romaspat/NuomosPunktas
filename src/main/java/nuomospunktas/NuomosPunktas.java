@@ -6,7 +6,6 @@ import nuomospunktas.kompiuteriai.Kompiuteris;
 import nuomospunktas.services.DataType;
 import nuomospunktas.services.KompiuteriaiDAOServiceFactory;
 import nuomospunktas.services.KompiuteriaiJsonDAOService;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
