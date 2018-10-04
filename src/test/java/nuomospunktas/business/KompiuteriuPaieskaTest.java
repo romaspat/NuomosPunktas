@@ -1,7 +1,6 @@
 package nuomospunktas.business;
 
 
-import nuomospunktas.NuomosPunktas;
 import nuomospunktas.kompiuteriai.Kompiuteris;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,15 +15,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class KompiuteriuPaieskaMapasTest {
+public class KompiuteriuPaieskaTest {
 
-    private KompiuteriuPaieskaMapas paieska;
+    private KompiuteriuPaieska paieska;
     private List<Kompiuteris> data;
     private LocalDate diena;
 
     @Before
     public void init() {
-        paieska = new KompiuteriuPaieskaMapas();
+        paieska = new KompiuteriuPaieska();
         data = new ArrayList<>();
         diena = LocalDate.of(2018, 10,4);
 

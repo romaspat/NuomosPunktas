@@ -3,7 +3,7 @@ package nuomospunktas.controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import nuomospunktas.business.KompiuteriuPaieskaMapas;
+import nuomospunktas.business.KompiuteriuPaieska;
 import nuomospunktas.kompiuteriai.Kompiuteris;
 import nuomospunktas.services.KompiuteriaiDAOFactSpr;
 import nuomospunktas.services.KompiuteriaiJsonDAOService;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class NuomosPunktasAPIController {
     private KompiuteriaiDAOFactSpr kompiuteriai;
 
     @Autowired
-    private KompiuteriuPaieskaMapas paieskaMapas;
+    private KompiuteriuPaieska paieskaMapas;
 
     @GetMapping
     public List<Kompiuteris> parodytiVisus() {
