@@ -25,7 +25,7 @@ public class KompiuteriuPaieska {
 
             for (PaieskosKey value : PaieskosKey.values()) {
                 paieskosFraze = kriterijai.get(value.toString());
-                if (kriterijai.containsKey(value.toString()) && kriterijai.get(value.toString()) != null) {
+                if (kriterijai.containsKey(value.toString()) && paieskosFraze!= null) {
 
                     switch (value) {
                         case tipas: {
