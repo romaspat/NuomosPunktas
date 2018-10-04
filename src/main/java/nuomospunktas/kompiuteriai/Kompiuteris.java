@@ -76,12 +76,14 @@ public class Kompiuteris {
         return grazinimoData;
     }
 
-    public void setIsnuomavimoData(LocalDate isnuomavimoData) {
+    public Kompiuteris setIsnuomavimoData(LocalDate isnuomavimoData) {
         this.isnuomavimoData = isnuomavimoData;
+        return this;
     }
 
-    public void setGrazinimoData(LocalDate grazinimoData) {
+    public Kompiuteris setGrazinimoData(LocalDate grazinimoData) {
         this.grazinimoData = grazinimoData;
+        return this;
     }
 
     public Kompiuteris setTipas(String tipas) {

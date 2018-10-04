@@ -16,19 +16,19 @@ public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<Kompiuteris>
     private List<Kompiuteris> kompiuteriai;
     {
         kompiuteriai = new ArrayList<>();
-        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("PK").setPavadinimas("Samsung T580").
+        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("Plansetinis").setPavadinimas("Samsung T580").
                 setDydis("10\"").setProcesorius("2Ghz").setAtmintis("2Gb").setDiskas("16Gb").setOs("Android").
                 setDienosKaina(15).setSavaitesKaina(60));
-        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("PK").setPavadinimas("Samsung T710").
+        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("Plansetinis").setPavadinimas("Samsung T710").
                 setDydis("7\"").setProcesorius("2Ghz").setAtmintis("2Gb").setDiskas("32Gb").setOs("Android").
                 setDienosKaina(10).setSavaitesKaina(50));
-        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("NK").setPavadinimas("Lenovo Yoga 910").
+        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("Nesiojamas").setPavadinimas("Lenovo Yoga 910").
                 setDydis("13\"").setProcesorius("3Ghz").setAtmintis("8Gb").setDiskas("512Gb").setOs("Windows 10").
                 setDienosKaina(20).setSavaitesKaina(50));
-        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("NK").setPavadinimas("HP Probook 450").
+        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("Nesiojamas").setPavadinimas("HP Probook 450").
                 setDydis("15\"").setProcesorius("2Ghz").setAtmintis("4Gb").setDiskas("256Gb").setOs("Linux").
                 setDienosKaina(15).setSavaitesKaina(60));
-        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("SK").setPavadinimas("Dell Optiplex 3010").
+        kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("Stacionarus").setPavadinimas("Dell Optiplex 3010").
                 setDydis("SFF").setProcesorius("3Ghz").setAtmintis("8Gb").setDiskas("1024Gb").setOs("Windows").
                 setDienosKaina(10).setSavaitesKaina(50));
     }
