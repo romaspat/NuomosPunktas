@@ -44,21 +44,28 @@ public class KompiuteriuPaieskaTest {
     }
 
     @Test
-    public void cases() {
+    public void casesWithDate() {
 
         Map<String, String> kriterijai = new HashMap<>();
         kriterijai.put("pavadinimas", "del");
-        kriterijai.put("grazinimoData", LocalDate.of(2018,10,7).toString());
+        kriterijai.put("grazinimoData", LocalDate.of(2018, 10, 7).toString());
+        assertEquals(1, paieska.ieskoti(data, kriterijai).size());
+    }
 
-        assertEquals(1,paieska.ieskoti(data,kriterijai).size());
-
+    @Test
+    public void casesWithKaina() {
+        Map<String, String> kriterijai = new HashMap<>();
         kriterijai = new HashMap<>();
         kriterijai.put("dienosKaina", "12");
         kriterijai.put("savaitesKaina", "65");
-        assertEquals(2, paieska.ieskoti(data,kriterijai).size());
-        assertEquals(1, paieska.ieskoti(data,kriterijai).get(0).getId());
-        assertEquals(4, paieska.ieskoti(data,kriterijai).get(1).getId());
+        assertEquals(2, paieska.ieskoti(data, kriterijai).size());
+        assertEquals(1, paieska.ieskoti(data, kriterijai).get(0).getId());
+        assertEquals(4, paieska.ieskoti(data, kriterijai).get(1).getId());
+    }
 
+    @Test
+    public void casesWithMixedParameters() {
+        Map<String, String> kriterijai = new HashMap<>();
 
         kriterijai = new HashMap<>();
         kriterijai.put("die", "12");
