@@ -15,7 +15,7 @@ import java.util.List;
 public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<Kompiuteris> {
 
     private List<Kompiuteris> kompiuteriai;
-    {
+    public KompiuteriaiDAODemoService(){
         kompiuteriai = new ArrayList<>();
         kompiuteriai.add(new Kompiuteris().setId(gautiId()).setTipas("Plansetinis").setPavadinimas("Samsung T580").
                 setDydis("10\"").setProcesorius("2Ghz").setAtmintis("2Gb").setDiskas("16Gb").setOs("Android").

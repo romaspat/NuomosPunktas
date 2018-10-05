@@ -26,7 +26,7 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris>
     public static final String JSON_FNAME = "kompiuteriai.json";
     private List<Kompiuteris> kompiuteriai;
 
-    {
+    public KompiuteriaiJsonDAOService(){
         try {
             File f = new File(JSON_FNAME);
 
