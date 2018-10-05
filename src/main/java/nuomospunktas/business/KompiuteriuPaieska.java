@@ -69,7 +69,9 @@ public class KompiuteriuPaieska {
                             break;
                         }
                         case grazinimoData: {
-                            arYra = arYra && kompiuteris.getGrazinimoData().isBefore(LocalDate.parse(paieskosFraze));
+                            if (arValidiData(paieskosFraze)) {
+                                arYra = arYra && kompiuteris.getGrazinimoData().isBefore(LocalDate.parse(paieskosFraze));
+                            }
                             break;
                         }
                         default: {
@@ -89,6 +91,15 @@ public class KompiuteriuPaieska {
     private boolean arSkaicius(String str) {
         try {
             Double.parseDouble(str);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private boolean arValidiData(String str) {
+        try {
+            LocalDate.parse(str);
             return true;
         } catch (Exception e) {
             return false;
