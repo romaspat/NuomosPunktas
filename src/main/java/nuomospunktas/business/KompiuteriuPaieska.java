@@ -25,60 +25,74 @@ public class KompiuteriuPaieska {
 
             for (PaieskosKey value : PaieskosKey.values()) {
                 paieskosFraze = kriterijai.get(value.toString());
-                if (kriterijai.containsKey(value.toString()) && paieskosFraze!= null) {
+                if (kriterijai.containsKey(value.toString())&&(paieskosFraze != null)) {
 
-                    switch (value) {
-                        case tipas: {
-                            arYra = arYra && kompiuteris.getTipas().toLowerCase().contains(paieskosFraze.toLowerCase());
-                            break;
-                        }
-                        case pavadinimas: {
-                            arYra = arYra && kompiuteris.getPavadinimas().toLowerCase().contains(paieskosFraze.toLowerCase());
-                            break;
-                        }
-                        case dydis: {
-                            arYra = arYra && kompiuteris.getDydis().toLowerCase().contains(paieskosFraze.toLowerCase());
-                            break;
-                        }
-                        case procesorius: {
-                            arYra = arYra && kompiuteris.getProcesorius().toLowerCase().contains(paieskosFraze.toLowerCase());
-                            break;
-                        }
-                        case atmintis: {
-                            arYra = arYra && kompiuteris.getAtmintis().toLowerCase().contains(paieskosFraze.toLowerCase());
-                            break;
-                        }
-                        case diskas: {
-                            arYra = arYra && kompiuteris.getDiskas().toLowerCase().contains(paieskosFraze.toLowerCase());
-                            break;
-                        }
-                        case os: {
-                            arYra = arYra && kompiuteris.getOs().toLowerCase().contains(paieskosFraze.toLowerCase());
-                            break;
-                        }
-                        case dienosKaina: {
-                            if (arSkaicius(paieskosFraze)) {
-                                arYra = arYra && kompiuteris.getDienosKaina() <= Double.parseDouble(paieskosFraze);
+                        switch (value) {
+                            case tipas: {
+                                if (kompiuteris.getTipas() != null) {
+                                    arYra = arYra && kompiuteris.getTipas().toLowerCase().contains(paieskosFraze.toLowerCase());
+                                }
+                                break;
                             }
-                            break;
-                        }
-                        case savaitesKaina: {
-                            if (arSkaicius(paieskosFraze)) {
-                                arYra = arYra && kompiuteris.getSavaitesKaina() <= Double.parseDouble(paieskosFraze);
+                            case pavadinimas: {
+                                if (kompiuteris.getPavadinimas() != null) {
+                                    arYra = arYra && kompiuteris.getPavadinimas().toLowerCase().contains(paieskosFraze.toLowerCase());
+                                }
+                                break;
                             }
-                            break;
-                        }
-                        case grazinimoData: {
-                            if (arValidiData(paieskosFraze)) {
-                                arYra = arYra && kompiuteris.getGrazinimoData().isBefore(LocalDate.parse(paieskosFraze));
+                            case dydis: {
+                                if (kompiuteris.getDydis() != null) {
+                                    arYra = arYra && kompiuteris.getDydis().toLowerCase().contains(paieskosFraze.toLowerCase());
+                                }
+                                break;
                             }
-                            break;
+                            case procesorius: {
+                                if (kompiuteris.getProcesorius() != null) {
+                                    arYra = arYra && kompiuteris.getProcesorius().toLowerCase().contains(paieskosFraze.toLowerCase());
+                                }
+                                break;
+                            }
+                            case atmintis: {
+                                if (kompiuteris.getAtmintis() != null) {
+                                    arYra = arYra && kompiuteris.getAtmintis().toLowerCase().contains(paieskosFraze.toLowerCase());
+                                }
+                                break;
+                            }
+                            case diskas: {
+                                if (kompiuteris.getDiskas() != null) {
+                                    arYra = arYra && kompiuteris.getDiskas().toLowerCase().contains(paieskosFraze.toLowerCase());
+                                }
+                                break;
+                            }
+                            case os: {
+                                if (kompiuteris.getDiskas() != null) {
+                                    arYra = arYra && kompiuteris.getOs().toLowerCase().contains(paieskosFraze.toLowerCase());
+                                }
+                                break;
+                            }
+                            case dienosKaina: {
+                                if (arSkaicius(paieskosFraze) && (kompiuteris.getDienosKaina() != null)) {
+                                    arYra = arYra && kompiuteris.getDienosKaina() <= Double.parseDouble(paieskosFraze);
+                                }
+                                break;
+                            }
+                            case savaitesKaina: {
+                                if (arSkaicius(paieskosFraze) && (kompiuteris.getSavaitesKaina() != null)) {
+                                    arYra = arYra && kompiuteris.getSavaitesKaina() <= Double.parseDouble(paieskosFraze);
+                                }
+                                break;
+                            }
+                            case grazinimoData: {
+                                if (arValidiData(paieskosFraze)) {
+                                    arYra = arYra && kompiuteris.getGrazinimoData().isBefore(LocalDate.parse(paieskosFraze));
+                                }
+                                break;
+                            }
+                            default: {
+                                arYra = true;
+                                break;
+                            }
                         }
-                        default: {
-                            arYra = true;
-                            break;
-                        }
-                    }
                 }
             }
             if (arYra) {

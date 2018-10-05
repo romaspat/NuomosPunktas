@@ -77,5 +77,9 @@ public class KompiuteriuPaieskaTest {
         kriterijai.put("savaitesKaina", "65");
         assertEquals(1, paieska.ieskoti(data,kriterijai).size());
         assertEquals(0, paieska.ieskoti(data,kriterijai).get(0).getId());
+
+        kriterijai = new HashMap<>();
+        kriterijai.put("dydis", null);
+        assertEquals(5, paieska.ieskoti(data,kriterijai).size());
     }
 }

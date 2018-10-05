@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +23,12 @@ import java.util.List;
 public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris> {
 
 
-    private String JSON_FNAME = "kompiuteriai.json";
+    public static final String JSON_FNAME = "kompiuteriai.json";
     private List<Kompiuteris> kompiuteriai;
 
     {
-        ClassLoader classLoader = getClass().getClassLoader();
         try {
-            File f = new File(classLoader.getResource(JSON_FNAME).getFile());
+            File f = new File(JSON_FNAME);
 
             if (!f.exists()) {
                 f.createNewFile();
@@ -75,8 +75,26 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris>
         }
     }
 
-    public void atnaujintiSarasa() {
-        saveList();
+    @Override
+    public void isnuomotiKompiuteri(Integer id, Integer terminas){
+        if (!kompiuteriai.isEmpty()) {
+            if (kompiuteriai.size() > id && id >= 0) {
+                kompiuteriai.get(id).setIsnuomavimoData(LocalDate.now());
+                kompiuteriai.get(id).setGrazinimoData(LocalDate.now().plusDays(terminas));
+            }
+            saveList();
+        }
+    }
+
+    @Override
+    public void grazintiKompiuteri(Integer id){
+        if (!kompiuteriai.isEmpty()) {
+            if (kompiuteriai.size() > id && id >= 0) {
+                kompiuteriai.get(id).setIsnuomavimoData(null);
+                kompiuteriai.get(id).setGrazinimoData(null);
+            }
+            saveList();
+        }
     }
 
     @Override
@@ -86,8 +104,7 @@ public class KompiuteriaiJsonDAOService implements IKompiuteriaiDAO<Kompiuteris>
 
     private void saveList() {
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            File f = new File(classLoader.getResource(JSON_FNAME).getFile());
+            File f = new File(JSON_FNAME);
 
             if (!f.exists()) {
                 f.createNewFile();

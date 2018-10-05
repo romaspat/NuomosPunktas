@@ -8,5 +8,9 @@ public interface IKompiuteriaiDAO<T> {
     void pridetiKompiuteri(T kompiuteris);
     void ismestiKompiuteri(int id);
     List<T> gautiVisus();
+ //   public void atnaujintiSarasa();
+
+    void isnuomotiKompiuteri(Integer id, Integer terminas);
+    void grazintiKompiuteri(Integer id);
 
 }

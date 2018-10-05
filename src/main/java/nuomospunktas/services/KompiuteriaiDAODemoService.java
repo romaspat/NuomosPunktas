@@ -5,6 +5,7 @@ import nuomospunktas.kompiuteriai.Kompiuteris;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +66,26 @@ public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<Kompiuteris>
         return kompiuteriai;
     }
 
+    @Override
+    public void isnuomotiKompiuteri(Integer id, Integer terminas){
+        if (!kompiuteriai.isEmpty()) {
+            if (kompiuteriai.size() > id && id >= 0) {
+                kompiuteriai.get(id).setIsnuomavimoData(LocalDate.now());
+                kompiuteriai.get(id).setGrazinimoData(LocalDate.now().plusDays(terminas));
+            }
+        }
+    }
+
+    @Override
+    public void grazintiKompiuteri(Integer id){
+        if (!kompiuteriai.isEmpty()) {
+            if (kompiuteriai.size() > id && id >= 0) {
+                kompiuteriai.get(id).setIsnuomavimoData(null);
+                kompiuteriai.get(id).setGrazinimoData(null);
+            }
+        }
+    }
+
     private int gautiId() {
 
         int max = 0;
@@ -76,4 +97,5 @@ public class KompiuteriaiDAODemoService implements IKompiuteriaiDAO<Kompiuteris>
         }
         return ++max;
     }
+
 }
